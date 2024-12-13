@@ -1,0 +1,32 @@
+### Create
+POST http://localhost:5000/create
+Content-Type: application/json
+
+{
+  "id": 1,
+  "price": {{$random.integer()}},
+  "ts": {{$timestamp}},
+  "value": "{{$random.uuid}}"
+}
+
+### Read
+GET http://localhost:5000/
+Accept: application/json
+
+### Read by id
+GET http://localhost:5000/1
+Accept: application/json
+
+### Update
+PUT http://localhost:5000/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "price": {{$random.integer()}},
+  "ts": {{$timestamp}},
+  "value": "{{$random.uuid}}"
+}
+
+### Delete
+DELETE http://localhost:5000/1

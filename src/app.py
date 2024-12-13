@@ -2,14 +2,16 @@ import sys
 
 from flask import Flask
 
+from src.middlewares import request_middleware
+from src.routes import bp
+
 app = Flask(__name__)
+app.logger.setLevel("INFO")
+app.register_blueprint(bp)
 
-
-@app.route('/')
-def hello_world():  # put application's code here
-    return 'Hello World!'
+request_middleware(app)
 
 
 def main() -> None:
-    debug = '--debug' in sys.argv
+    debug = "--debug" in sys.argv
     app.run(host="0.0.0.0", port=5000, debug=debug)
